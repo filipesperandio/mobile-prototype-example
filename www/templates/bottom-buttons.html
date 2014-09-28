@@ -1,13 +1,28 @@
 <div class="tabs tabs-icon-top tabs-light">
 
-  <button ng-click="Slide.previous()" class="tab-item activated button button-light ">
+  <button ng-click="Slide.toggleFollow()" class="tab-item button button-light ">
+    <i class="icon " 
+      ng-class="{'ion-eye': Slide.isFollowing(), 'ion-eye-disabled': !Slide.isFollowing()}"></i>
+    Follow 
+  </button>
+
+  <button ng-click="Slide.previous()" class="tab-item button button-light "
+    ng-disabled="Slide.isFollowing()" >
     <i class="icon ion-arrow-left-b"></i>
     Previous
   </button>
 
-  <button ng-click="Slide.next()" class="tab-item activated button button-light">
+  <button ng-click="Slide.next()" class="tab-item button button-light"
+    ng-disabled="Slide.isFollowing()" >
     <i class="icon ion-arrow-right-b"></i>
     Next
+  </button>
+
+  <button ng-click="Slide.togglePresenter()" class="tab-item button button-light"
+    ng-disabled="Slide.isPresenterTaken()"
+    ng-class="{'button-dark': Slide.isPresenter()}" >
+    <i class="icon ion-mic-b"></i>
+    Presenter
   </button>
 
 </div>
