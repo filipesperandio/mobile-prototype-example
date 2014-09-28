@@ -1,25 +1,26 @@
 <div class="tabs tabs-icon-top tabs-light">
 
-  <button ng-click="Slide.toggleFollow()" class="tab-item button button-light "
-    ng-class="{activated: Slide.isFollowOn()}" >
+  <button ng-click="Slide.toggleFollow()" class="tab-item button button-light ">
     <i class="icon " 
-      ng-class="{'ion-eye': Slide.isFollowOn(), 'ion-eye-disabled': !Slide.isFollowOn}"></i>
+      ng-class="{'ion-eye': Slide.isFollowing(), 'ion-eye-disabled': !Slide.isFollowing()}"></i>
     Follow 
   </button>
 
-  <button ng-click="Slide.previous()" class="tab-item button button-light ">
+  <button ng-click="Slide.previous()" class="tab-item button button-light "
+    ng-disabled="Slide.isFollowing()" >
     <i class="icon ion-arrow-left-b"></i>
     Previous
   </button>
 
-  <button ng-click="Slide.next()" class="tab-item button button-light">
+  <button ng-click="Slide.next()" class="tab-item button button-light"
+    ng-disabled="Slide.isFollowing()" >
     <i class="icon ion-arrow-right-b"></i>
     Next
   </button>
 
-  <button ng-click="Slide.makePresenter()" class="tab-item button button-light"
+  <button ng-click="Slide.togglePresenter()" class="tab-item button button-light"
     ng-disabled="Slide.isPresenterTaken()"
-    ng-class="{activated: Slide.isPresenter()}" >
+    ng-class="{'button-dark': Slide.isPresenter()}" >
     <i class="icon ion-mic-b"></i>
     Presenter
   </button>
