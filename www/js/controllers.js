@@ -1,5 +1,5 @@
 var SlideController = function($scope, $stateParams, $state, Presentation, PresentationControl) {
-  var total = 15;
+  var total = 8;
   var localCurrentSlide = parseInt($stateParams.id);
 
   Presentation.$asObject().$bindTo($scope, 'presentation');
