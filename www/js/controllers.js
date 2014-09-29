@@ -2,17 +2,17 @@ var SlideController = function($scope, $stateParams, $state, Presentation, Prese
   var total = 8;
   var localCurrentSlide = parseInt($stateParams.id);
 
+
+
   Presentation.$asObject().$bindTo($scope, 'presentation');
 
-
   $scope.$watch('presentation.current', function() {
-    if (PresentationControl.isFollowing()) {
-      console.log(' is following');
-      if($scope.presentation){
-        moveTo($scope.presentation.current);
-      }
+    if (PresentationControl.isFollowing() && $scope.presentation){
+      moveTo($scope.presentation.current);
     }
   });
+
+
 
 
   var next = function() {
@@ -29,14 +29,12 @@ var SlideController = function($scope, $stateParams, $state, Presentation, Prese
 
   var moveToAndUpdate = function(slide) {
     if(PresentationControl.isPresenter()) {
-      console.log(' updating remote current slide' );
       Presentation.$set('current', slide);
     }
     moveTo(slide);
   };
 
   var moveTo = function(slide) {
-    console.log("moving to " + slide);
     $state.go('slides', { id: slide });
   };
 
